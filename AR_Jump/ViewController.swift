@@ -7,12 +7,17 @@
 //
 
 import UIKit
-
+import ARKit
 class ViewController: UIViewController {
+
+    @IBOutlet weak var arscnView: ARSCNView!
+    let configuration = ARWorldTrackingConfiguration()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.arscnView.debugOptions = [ ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        self.configuration.planeDetection = .horizontal
+        self.arscnView.session.run(configuration)
     }
 
     override func didReceiveMemoryWarning() {
