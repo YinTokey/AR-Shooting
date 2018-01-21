@@ -8,7 +8,7 @@
 
 import UIKit
 import ARKit
-class ViewController: UIViewController {
+class ViewController: UIViewController , ARSCNViewDelegate {
 
     @IBOutlet weak var arscnView: ARSCNView!
     let configuration = ARWorldTrackingConfiguration()
@@ -18,13 +18,29 @@ class ViewController: UIViewController {
         self.arscnView.debugOptions = [ ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
         self.configuration.planeDetection = .horizontal
         self.arscnView.session.run(configuration)
+        self.arscnView.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func startClick(_ sender: Any) {
+        
+    }
+    
+  
+    
+    func addGeometric(_ position:SCNVector3,_ type:Int){
+        
+    }
+    
+    
+    //ARSCNViewDelegate
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard anchor is ARPlaneAnchor else {return}
+
     }
 
-
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        
+    }
+    
 }
 
