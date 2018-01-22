@@ -14,6 +14,8 @@
 		C91F4546201249EC0067F448 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91F4544201249EC0067F448 /* LaunchScreen.storyboard */; };
 		C91F4551201249EC0067F448 /* AR_JumpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F4550201249EC0067F448 /* AR_JumpTests.swift */; };
 		C91F455C201249EC0067F448 /* AR_JumpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F455B201249EC0067F448 /* AR_JumpUITests.swift */; };
+		C91F456A201628430067F448 /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F4569201628430067F448 /* ShapeType.swift */; };
+		C91F456D201634AF0067F448 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F456C201634AE0067F448 /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		C91F4557201249EC0067F448 /* AR_JumpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AR_JumpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91F455B201249EC0067F448 /* AR_JumpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AR_JumpUITests.swift; sourceTree = "<group>"; };
 		C91F455D201249EC0067F448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C91F4569201628430067F448 /* ShapeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
+		C91F456C201634AE0067F448 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +101,10 @@
 		C91F453A201249EC0067F448 /* AR_Jump */ = {
 			isa = PBXGroup;
 			children = (
+				C91F456B2016349D0067F448 /* Utils */,
 				C91F453B201249EC0067F448 /* AppDelegate.swift */,
 				C91F453D201249EC0067F448 /* ViewController.swift */,
+				C91F4569201628430067F448 /* ShapeType.swift */,
 				C91F453F201249EC0067F448 /* Main.storyboard */,
 				C91F4542201249EC0067F448 /* Assets.xcassets */,
 				C91F4544201249EC0067F448 /* LaunchScreen.storyboard */,
@@ -123,6 +129,14 @@
 				C91F455D201249EC0067F448 /* Info.plist */,
 			);
 			path = AR_JumpUITests;
+			sourceTree = "<group>";
+		};
+		C91F456B2016349D0067F448 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C91F456C201634AE0067F448 /* UIColor+Extensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +274,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C91F453E201249EC0067F448 /* ViewController.swift in Sources */,
+				C91F456A201628430067F448 /* ShapeType.swift in Sources */,
 				C91F453C201249EC0067F448 /* AppDelegate.swift in Sources */,
+				C91F456D201634AF0067F448 /* UIColor+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

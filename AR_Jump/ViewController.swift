@@ -22,10 +22,22 @@ class ViewController: UIViewController , ARSCNViewDelegate {
     }
 
     @IBAction func startClick(_ sender: Any) {
+        var geometry:SCNGeometry
+        switch ShapeType.random() {
+        case .box:
+            geometry = SCNBox(width: 0.01, height:0.01, length: 0.01, chamferRadius: 0.0)
+        case .cylinder:
+            geometry = SCNCylinder(radius: 0.02, height: 0.01)
+        }
+        geometry.materials.first?.diffuse.contents = UIColor.random()
+        
+        let geometyNode = SCNNode(geometry:geometry)
+        geometyNode.position = SCNVector3(0.2,0,0)
+        self.arscnView.scene.rootNode.addChildNode(geometyNode)
         
     }
     
-  
+   
     
     func addGeometric(_ position:SCNVector3,_ type:Int){
         
