@@ -46,9 +46,17 @@ class ViewController: UIViewController , ARSCNViewDelegate {
     
    
     func createConcrete(planeAnchor: ARPlaneAnchor) -> SCNNode {
-        let concreteNode = SCNNode(geometry: SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(CGFloat(planeAnchor.extent.z))))
-        concreteNode.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "concrete")
-        concreteNode.geometry?.firstMaterial?.isDoubleSided = true
+//        let concreteNode = SCNNode(geometry: SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(CGFloat(planeAnchor.extent.z))))
+//        concreteNode.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "concrete")
+//        concreteNode.geometry?.firstMaterial?.isDoubleSided = true
+//        concreteNode.position = SCNVector3(planeAnchor.center.x,planeAnchor.center.y,planeAnchor.center.z)
+//        concreteNode.eulerAngles = SCNVector3(90.degreesToRadians, 0, 0)
+//        let staticBody = SCNPhysicsBody.static()
+//        concreteNode.physicsBody = staticBody
+//        return concreteNode
+        let concreteScene = SCNScene(named: "Jump.scnassets/Target.scn")
+  
+        let concreteNode = (concreteScene?.rootNode.childNode(withName: "target", recursively: false))!
         concreteNode.position = SCNVector3(planeAnchor.center.x,planeAnchor.center.y,planeAnchor.center.z)
         concreteNode.eulerAngles = SCNVector3(90.degreesToRadians, 0, 0)
         let staticBody = SCNPhysicsBody.static()
