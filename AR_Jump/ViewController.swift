@@ -16,7 +16,13 @@ class ViewController: UIViewController , ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.arscnView.debugOptions = [ ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
-        self.configuration.planeDetection = .horizontal
+        if #available(iOS 11.3, *) {
+            self.configuration.planeDetection = .vertical
+        } else {
+            // Fallback on earlier versions
+            self.configuration.planeDetection = .horizontal
+
+        }
         self.arscnView.session.run(configuration)
         self.arscnView.delegate = self
     }
