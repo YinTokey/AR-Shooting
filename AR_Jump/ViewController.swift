@@ -83,6 +83,8 @@ class ViewController: UIViewController , ARSCNViewDelegate {
         let dartNode = (dartsScene?.rootNode.childNode(withName: "darts", recursively: false))!
         dartNode.position = position
         let body = SCNPhysicsBody(type: .dynamic, shape:SCNPhysicsShape(node: dartNode))
+        dartNode.eulerAngles = SCNVector3(-105.degreesToRadians, 0, 0)
+
         dartNode.physicsBody = body
         dartNode.name = "dart"
         body.restitution = 0.2
