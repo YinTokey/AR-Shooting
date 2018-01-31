@@ -58,7 +58,7 @@ class ViewController: UIViewController , ARSCNViewDelegate {
   
         let concreteNode = (concreteScene?.rootNode.childNode(withName: "target", recursively: false))!
         concreteNode.position = SCNVector3(planeAnchor.center.x,planeAnchor.center.y,planeAnchor.center.z)
-        concreteNode.eulerAngles = SCNVector3(90.degreesToRadians, 0, 0)
+        concreteNode.eulerAngles = SCNVector3(270.degreesToRadians, 0, 0)
         let staticBody = SCNPhysicsBody.static()
         concreteNode.physicsBody = staticBody
         return concreteNode
