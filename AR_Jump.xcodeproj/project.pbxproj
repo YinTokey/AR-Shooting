@@ -18,6 +18,7 @@
 		C91F456D201634AF0067F448 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F456C201634AE0067F448 /* UIColor+Extensions.swift */; };
 		C91F456F2018DBD30067F448 /* CheckerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F456E2018DBD30067F448 /* CheckerNode.swift */; };
 		C91F45712018DD1C0067F448 /* Jump.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C91F45702018DD1C0067F448 /* Jump.scnassets */; };
+		EFD3055FEFDEA7359AA05E69 /* Pods_AR_Jump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6CF4234EA2E71D2B4AA7B1A /* Pods_AR_Jump.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EC76E85ABF69D3C07EB6B78 /* Pods-AR_Jump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR_Jump.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR_Jump/Pods-AR_Jump.debug.xcconfig"; sourceTree = "<group>"; };
+		B5100CBDD4DA876C119D2F33 /* Pods-AR_Jump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR_Jump.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR_Jump/Pods-AR_Jump.release.xcconfig"; sourceTree = "<group>"; };
+		C6CF4234EA2E71D2B4AA7B1A /* Pods_AR_Jump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_Jump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91F4538201249EC0067F448 /* AR_Jump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR_Jump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91F453B201249EC0067F448 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C91F453D201249EC0067F448 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFD3055FEFDEA7359AA05E69 /* Pods_AR_Jump.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49ED0440CB5FE8A12197D755 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0EC76E85ABF69D3C07EB6B78 /* Pods-AR_Jump.debug.xcconfig */,
+				B5100CBDD4DA876C119D2F33 /* Pods-AR_Jump.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		91A09BB357AA17AC02A8333D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6CF4234EA2E71D2B4AA7B1A /* Pods_AR_Jump.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C91F452F201249EC0067F448 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +111,8 @@
 				C91F454F201249EC0067F448 /* AR_JumpTests */,
 				C91F455A201249EC0067F448 /* AR_JumpUITests */,
 				C91F4539201249EC0067F448 /* Products */,
+				49ED0440CB5FE8A12197D755 /* Pods */,
+				91A09BB357AA17AC02A8333D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,9 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C91F4560201249EC0067F448 /* Build configuration list for PBXNativeTarget "AR_Jump" */;
 			buildPhases = (
+				21EE23AA86FCC3556CBF8417 /* [CP] Check Pods Manifest.lock */,
 				C91F4534201249EC0067F448 /* Sources */,
 				C91F4535201249EC0067F448 /* Frameworks */,
 				C91F4536201249EC0067F448 /* Resources */,
+				3DBAB375F1E89948C4697AF0 /* [CP] Embed Pods Frameworks */,
+				A5BB247C1F53900920A0D97B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,6 +301,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21EE23AA86FCC3556CBF8417 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3DBAB375F1E89948C4697AF0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AR_Jump/Pods-AR_Jump-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5BB247C1F53900920A0D97B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AR_Jump/Pods-AR_Jump-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C91F4534201249EC0067F448 /* Sources */ = {
@@ -448,6 +523,7 @@
 		};
 		C91F4561201249EC0067F448 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EC76E85ABF69D3C07EB6B78 /* Pods-AR_Jump.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,6 +540,7 @@
 		};
 		C91F4562201249EC0067F448 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5100CBDD4DA876C119D2F33 /* Pods-AR_Jump.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

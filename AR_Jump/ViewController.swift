@@ -57,6 +57,9 @@ class ViewController: UIViewController , ARSCNViewDelegate {
         return targetNode
     }
     
+    func
+    
+    
     //ARSCNViewDelegate
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
