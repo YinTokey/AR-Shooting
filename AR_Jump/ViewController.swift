@@ -45,30 +45,23 @@ class ViewController: UIViewController , ARSCNViewDelegate {
     }
     
    
-    func createConcrete(planeAnchor: ARPlaneAnchor) -> SCNNode {
-//        let concreteNode = SCNNode(geometry: SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(CGFloat(planeAnchor.extent.z))))
-//        concreteNode.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "concrete")
-//        concreteNode.geometry?.firstMaterial?.isDoubleSided = true
-//        concreteNode.position = SCNVector3(planeAnchor.center.x,planeAnchor.center.y,planeAnchor.center.z)
-//        concreteNode.eulerAngles = SCNVector3(90.degreesToRadians, 0, 0)
-//        let staticBody = SCNPhysicsBody.static()
-//        concreteNode.physicsBody = staticBody
-//        return concreteNode
-        let concreteScene = SCNScene(named: "Jump.scnassets/Target.scn")
+    func createTarget(planeAnchor: ARPlaneAnchor) -> SCNNode {
+
+        let targetScene = SCNScene(named: "Jump.scnassets/Target.scn")
   
-        let concreteNode = (concreteScene?.rootNode.childNode(withName: "target", recursively: false))!
-        concreteNode.position = SCNVector3(planeAnchor.center.x,planeAnchor.center.y,planeAnchor.center.z)
-        concreteNode.eulerAngles = SCNVector3(270.degreesToRadians, 0, 0)
+        let targetNode = (targetScene?.rootNode.childNode(withName: "target", recursively: false))!
+        targetNode.position = SCNVector3(planeAnchor.center.x,planeAnchor.center.y,planeAnchor.center.z)
+        targetNode.eulerAngles = SCNVector3(270.degreesToRadians, 0, 0)
         let staticBody = SCNPhysicsBody.static()
-        concreteNode.physicsBody = staticBody
-        return concreteNode
+        targetNode.physicsBody = staticBody
+        return targetNode
     }
     
     //ARSCNViewDelegate
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
-        let concreteNode = createConcrete(planeAnchor: planeAnchor)
-        node.addChildNode(concreteNode)
+        let targetNode = createTarget(planeAnchor: planeAnchor)
+        node.addChildNode(targetNode)
         print("new flat surface detected, new ARPlaneAnchor added")
     }
 
@@ -79,8 +72,8 @@ class ViewController: UIViewController , ARSCNViewDelegate {
             childNode.removeFromParentNode()
             
         }
-        let concreteNode = createConcrete(planeAnchor: planeAnchor)
-        node.addChildNode(concreteNode)
+        let targetNode = createTarget(planeAnchor: planeAnchor)
+        node.addChildNode(targetNode)
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
