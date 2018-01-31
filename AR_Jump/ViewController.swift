@@ -74,6 +74,20 @@ class ViewController: UIViewController , ARSCNViewDelegate {
     }
     
     func shootDart(){
+        guard let pointOfView = self.arscnView.pointOfView else {return}
+        let transform = pointOfView.transform
+        let location = SCNVector3(transform.m41, transform.m42, transform.m43)
+        let orientation = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
+        let position = location + orientation
+        let dartsScene = SCNScene(named: "Jump.scnassets/darts.scn")
+        let dartNode = (dartsScene?.rootNode.childNode(withName: "darts", recursively: false))!
+        dartNode.position = position
+        let body = SCNPhysicsBody(type: .dynamic, shape:SCNPhysicsShape(node: dartNode))
+        dartNode.physicsBody = body
+        dartNode.name = "dart"
+        body.restitution = 0.2
+        dartNode.physicsBody?.applyForce(SCNVector3(orientation.x*power, orientation.y*power, orientation.z*power), asImpulse: true)
+        self.arscnView.scene.rootNode.addChildNode(dartNode)
         
     }
     
