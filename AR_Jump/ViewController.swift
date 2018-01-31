@@ -8,11 +8,13 @@
 
 import UIKit
 import ARKit
+import Each
 class ViewController: UIViewController , ARSCNViewDelegate {
 
     @IBOutlet weak var arscnView: ARSCNView!
     let configuration = ARWorldTrackingConfiguration()
-
+    var power: Float = 1
+    let timer = Each(0.05).seconds
     override func viewDidLoad() {
         super.viewDidLoad()
         self.arscnView.debugOptions = [ ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
@@ -57,7 +59,23 @@ class ViewController: UIViewController , ARSCNViewDelegate {
         return targetNode
     }
     
-    func
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        timer.perform(closure: { () -> NextStep in
+            self.power = self.power + 1
+            return .continue
+        })
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.timer.stop()
+        self.shootDart()
+        self.power = 1
+
+    }
+    
+    func shootDart(){
+        
+    }
     
     
     //ARSCNViewDelegate
