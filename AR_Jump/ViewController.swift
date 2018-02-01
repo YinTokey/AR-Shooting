@@ -15,13 +15,15 @@ enum BitMaskCategory: Int {
     case target = 3
 }
 
-class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate {
+class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCNPhysicsContactDelegate {
 
     @IBOutlet weak var arscnView: ARSCNView!
     let configuration = ARWorldTrackingConfiguration()
     var power: Float = 1
     let timer = Each(0.05).seconds
     var targetOren : SCNVector4!
+    var Target: SCNNode?
+    var value:Int!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.arscnView.debugOptions = [ ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
@@ -35,6 +37,8 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate {
         self.arscnView.session.run(configuration)
         self.arscnView.delegate = self
         self.arscnView.session.delegate = self
+        self.arscnView.scene.physicsWorld.contactDelegate = self
+
     }
 
     func createTarget(planeAnchor: ARPlaneAnchor) -> SCNNode {
@@ -48,6 +52,8 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate {
 //        print("~~~~~\(targetNode.eulerAngles )")
         let staticBody = SCNPhysicsBody.static()
         targetNode.physicsBody = staticBody
+        targetNode.physicsBody?.categoryBitMask = BitMaskCategory.target.rawValue
+        targetNode.physicsBody?.contactTestBitMask = BitMaskCategory.bullet.rawValue
         return targetNode
     }
     
@@ -92,8 +98,8 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate {
         body.restitution = 0.2
         bullet.physicsBody = body
         bullet.physicsBody?.applyForce(SCNVector3(orientation.x*power, orientation.y*power, orientation.z*power), asImpulse: true)
-//        bullet.physicsBody?.categoryBitMask = BitMaskCategory.bullet.rawValue
-//        bullet.physicsBody?.contactTestBitMask = BitMaskCategory.target.rawValue
+        bullet.physicsBody?.categoryBitMask = BitMaskCategory.bullet.rawValue
+        bullet.physicsBody?.contactTestBitMask = BitMaskCategory.target.rawValue
         self.arscnView.scene.rootNode.addChildNode(bullet)
         bullet.runAction(
             SCNAction.sequence([SCNAction.wait(duration: 2.0),
@@ -130,6 +136,15 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate {
         
     }
     
+    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        let nodeA = contact.nodeA
+        value = nodeA.physicsBody?.categoryBitMask
+        
+        
+        print("@@@@@ \(value)")
+        return
+        
+    }
 
     
 }
