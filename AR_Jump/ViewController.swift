@@ -15,12 +15,13 @@ enum BitMaskCategory: Int {
     case target = 3
 }
 
-class ViewController: UIViewController , ARSCNViewDelegate {
+class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate {
 
     @IBOutlet weak var arscnView: ARSCNView!
     let configuration = ARWorldTrackingConfiguration()
     var power: Float = 1
     let timer = Each(0.05).seconds
+    var targetOren : SCNVector4!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.arscnView.debugOptions = [ ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
@@ -33,9 +34,9 @@ class ViewController: UIViewController , ARSCNViewDelegate {
         }
         self.arscnView.session.run(configuration)
         self.arscnView.delegate = self
+        self.arscnView.session.delegate = self
     }
-    
-   
+
     func createTarget(planeAnchor: ARPlaneAnchor) -> SCNNode {
 
         let targetScene = SCNScene(named: "Jump.scnassets/Target.scn")
@@ -43,6 +44,8 @@ class ViewController: UIViewController , ARSCNViewDelegate {
         let targetNode = (targetScene?.rootNode.childNode(withName: "target", recursively: false))!
         targetNode.position = SCNVector3(planeAnchor.center.x,planeAnchor.center.y,planeAnchor.center.z)
         targetNode.eulerAngles = SCNVector3(270.degreesToRadians, 0, 0)
+//        targetOren = targetNode.orientation
+//        print("~~~~~\(targetNode.eulerAngles )")
         let staticBody = SCNPhysicsBody.static()
         targetNode.physicsBody = staticBody
         return targetNode
@@ -65,24 +68,37 @@ class ViewController: UIViewController , ARSCNViewDelegate {
     func shootDart(){
         guard let pointOfView = self.arscnView.pointOfView else {return}
         let transform = pointOfView.transform
-        let orientation = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
         let location = SCNVector3(transform.m41, transform.m42, transform.m43)
-        let position = orientation + location
-        let bullet = SCNNode(geometry: SCNSphere(radius: 0.1))
-        bullet.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+        let orientation = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
+        print("----- \(-transform.m31),\(-transform.m32),\(-transform.m33)")
+        let position = location + orientation
+//        let dartsScene = SCNScene(named: "Jump.scnassets/darts.scn")
+//        let dartNode = (dartsScene?.rootNode.childNode(withName: "darts", recursively: false))!
+//        dartNode.position = position
+//        dartNode.eulerAngles = SCNVector3(0,0,-270.degreesToRadians)
+//        let body = SCNPhysicsBody(type: .dynamic, shape:SCNPhysicsShape(node: dartNode))
+//
+//        dartNode.physicsBody = body
+//        dartNode.name = "dart"
+//        body.restitution = 0.2
+//        dartNode.physicsBody?.applyForce(SCNVector3(orientation.x*power, orientation.y*power, orientation.z*power), asImpulse: true)
+//        self.arscnView.scene.rootNode.addChildNode(dartNode)
+
+        let bullet = SCNNode(geometry: SCNSphere(radius: 0.02))
+        bullet.geometry?.firstMaterial?.diffuse.contents = UIColor.purple
         bullet.position = position
         let body = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(node: bullet, options: nil))
         body.isAffectedByGravity = false
+        body.restitution = 0.2
         bullet.physicsBody = body
         bullet.physicsBody?.applyForce(SCNVector3(orientation.x*power, orientation.y*power, orientation.z*power), asImpulse: true)
-        bullet.physicsBody?.categoryBitMask = BitMaskCategory.bullet.rawValue
-        bullet.physicsBody?.contactTestBitMask = BitMaskCategory.target.rawValue
+//        bullet.physicsBody?.categoryBitMask = BitMaskCategory.bullet.rawValue
+//        bullet.physicsBody?.contactTestBitMask = BitMaskCategory.target.rawValue
         self.arscnView.scene.rootNode.addChildNode(bullet)
         bullet.runAction(
             SCNAction.sequence([SCNAction.wait(duration: 2.0),
                                 SCNAction.removeFromParentNode()])
         )
-        
     }
     
     
@@ -113,6 +129,8 @@ class ViewController: UIViewController , ARSCNViewDelegate {
         }
         
     }
+    
+
     
 }
 
