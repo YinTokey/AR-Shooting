@@ -9,6 +9,12 @@
 import UIKit
 import ARKit
 import Each
+
+enum BitMaskCategory: Int {
+    case bullet = 2
+    case target = 3
+}
+
 class ViewController: UIViewController , ARSCNViewDelegate {
 
     @IBOutlet weak var arscnView: ARSCNView!
@@ -27,23 +33,6 @@ class ViewController: UIViewController , ARSCNViewDelegate {
         }
         self.arscnView.session.run(configuration)
         self.arscnView.delegate = self
-    }
-
-    @IBAction func startClick(_ sender: Any) {
-        var geometry:SCNGeometry
-        switch ShapeType.random() {
-        case .box:
-            geometry = SCNBox(width: 0.01, height:0.01, length: 0.01, chamferRadius: 0.0)
-        case .cylinder:
-            geometry = SCNCylinder(radius: 02, height: 0.01)
-        }
-        geometry.materials.first?.diffuse.contents = UIColor.random()
-        
-        let geometyNode = SCNNode(geometry:geometry)
-        geometyNode.position = SCNVector3(0.2,0,0)
-        
-        self.arscnView.scene.rootNode.addChildNode(geometyNode)
-        
     }
     
    
@@ -76,20 +65,23 @@ class ViewController: UIViewController , ARSCNViewDelegate {
     func shootDart(){
         guard let pointOfView = self.arscnView.pointOfView else {return}
         let transform = pointOfView.transform
-        let location = SCNVector3(transform.m41, transform.m42, transform.m43)
         let orientation = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
-        let position = location + orientation
-        let dartsScene = SCNScene(named: "Jump.scnassets/darts.scn")
-        let dartNode = (dartsScene?.rootNode.childNode(withName: "darts", recursively: false))!
-        dartNode.position = position
-        let body = SCNPhysicsBody(type: .dynamic, shape:SCNPhysicsShape(node: dartNode))
-        dartNode.eulerAngles = SCNVector3(-105.degreesToRadians, 0, 0)
-
-        dartNode.physicsBody = body
-        dartNode.name = "dart"
-        body.restitution = 0.2
-        dartNode.physicsBody?.applyForce(SCNVector3(orientation.x*power, orientation.y*power, orientation.z*power), asImpulse: true)
-        self.arscnView.scene.rootNode.addChildNode(dartNode)
+        let location = SCNVector3(transform.m41, transform.m42, transform.m43)
+        let position = orientation + location
+        let bullet = SCNNode(geometry: SCNSphere(radius: 0.1))
+        bullet.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+        bullet.position = position
+        let body = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(node: bullet, options: nil))
+        body.isAffectedByGravity = false
+        bullet.physicsBody = body
+        bullet.physicsBody?.applyForce(SCNVector3(orientation.x*power, orientation.y*power, orientation.z*power), asImpulse: true)
+        bullet.physicsBody?.categoryBitMask = BitMaskCategory.bullet.rawValue
+        bullet.physicsBody?.contactTestBitMask = BitMaskCategory.target.rawValue
+        self.arscnView.scene.rootNode.addChildNode(bullet)
+        bullet.runAction(
+            SCNAction.sequence([SCNAction.wait(duration: 2.0),
+                                SCNAction.removeFromParentNode()])
+        )
         
     }
     
