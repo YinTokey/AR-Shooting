@@ -24,6 +24,7 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
     var targetOren : SCNVector4!
     var Target: SCNNode?
     var value:Int!
+    var didAddTarget:Bool!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.arscnView.debugOptions = [ ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
@@ -38,6 +39,8 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         self.arscnView.delegate = self
         self.arscnView.session.delegate = self
         self.arscnView.scene.physicsWorld.contactDelegate = self
+        
+        didAddTarget = false
 
     }
 
@@ -48,8 +51,7 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         let targetNode = (targetScene?.rootNode.childNode(withName: "target", recursively: false))!
         targetNode.position = SCNVector3(planeAnchor.center.x,planeAnchor.center.y,planeAnchor.center.z)
         targetNode.eulerAngles = SCNVector3(270.degreesToRadians, 0, 0)
-//        targetOren = targetNode.orientation
-//        print("~~~~~\(targetNode.eulerAngles )")
+
         let staticBody = SCNPhysicsBody.static()
         targetNode.physicsBody = staticBody
         targetNode.physicsBody?.categoryBitMask = BitMaskCategory.target.rawValue
@@ -76,19 +78,7 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         let transform = pointOfView.transform
         let location = SCNVector3(transform.m41, transform.m42, transform.m43)
         let orientation = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
-        print("----- \(-transform.m31),\(-transform.m32),\(-transform.m33)")
         let position = location + orientation
-//        let dartsScene = SCNScene(named: "Jump.scnassets/darts.scn")
-//        let dartNode = (dartsScene?.rootNode.childNode(withName: "darts", recursively: false))!
-//        dartNode.position = position
-//        dartNode.eulerAngles = SCNVector3(0,0,-270.degreesToRadians)
-//        let body = SCNPhysicsBody(type: .dynamic, shape:SCNPhysicsShape(node: dartNode))
-//
-//        dartNode.physicsBody = body
-//        dartNode.name = "dart"
-//        body.restitution = 0.2
-//        dartNode.physicsBody?.applyForce(SCNVector3(orientation.x*power, orientation.y*power, orientation.z*power), asImpulse: true)
-//        self.arscnView.scene.rootNode.addChildNode(dartNode)
 
         let bullet = SCNNode(geometry: SCNSphere(radius: 0.02))
         bullet.geometry?.firstMaterial?.diffuse.contents = UIColor.purple
@@ -111,35 +101,34 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
     //ARSCNViewDelegate
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
-        let targetNode = createTarget(planeAnchor: planeAnchor)
-        node.addChildNode(targetNode)
+        if(didAddTarget == false){
+            let targetNode = createTarget(planeAnchor: planeAnchor)
+            node.addChildNode(targetNode)
+            didAddTarget = true
+        }
+  
         print("new flat surface detected, new ARPlaneAnchor added")
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
         print("updating floor's anchor...")
-        node.enumerateChildNodes { (childNode, _) in
-            childNode.removeFromParentNode()
-            
+
+        if(didAddTarget == false){
+            let targetNode = createTarget(planeAnchor: planeAnchor)
+            node.addChildNode(targetNode)
+            didAddTarget = true
         }
-        let targetNode = createTarget(planeAnchor: planeAnchor)
-        node.addChildNode(targetNode)
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
         guard let _ = anchor as? ARPlaneAnchor else {return}
-        node.enumerateChildNodes { (childNode, _) in
-            childNode.removeFromParentNode()
-            
-        }
         
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         let nodeA = contact.nodeA
         value = nodeA.physicsBody?.categoryBitMask
-        
         
         print("@@@@@ \(value)")
         return
