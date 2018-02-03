@@ -68,12 +68,12 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.timer.stop()
-        self.shootDart()
+        self.shootBullet()
         self.power = 1
 
     }
     
-    func shootDart(){
+    func shootBullet(){
         guard let pointOfView = self.arscnView.pointOfView else {return}
         let transform = pointOfView.transform
         let location = SCNVector3(transform.m41, transform.m42, transform.m43)
