@@ -10,10 +10,10 @@ import UIKit
 import ARKit
 import Each
 
-enum BitMaskCategory: Int {
-    case bullet = 2
-    case target = 3
-}
+//enum BitMaskCategory: Int {
+//    case bullet = 1
+//    case target = 4
+//}
 
 class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCNPhysicsContactDelegate {
 
@@ -54,8 +54,8 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
 
         let staticBody = SCNPhysicsBody.static()
         targetNode.physicsBody = staticBody
-        targetNode.physicsBody?.categoryBitMask = BitMaskCategory.target.rawValue
-        targetNode.physicsBody?.contactTestBitMask = BitMaskCategory.bullet.rawValue
+        targetNode.physicsBody?.categoryBitMask = 2|3|4|5|6|7|8|9|10|11
+        targetNode.physicsBody?.contactTestBitMask = 1
         return targetNode
     }
     
@@ -88,8 +88,8 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         body.restitution = 0.2
         bullet.physicsBody = body
         bullet.physicsBody?.applyForce(SCNVector3(orientation.x*power, orientation.y*power, orientation.z*power), asImpulse: true)
-        bullet.physicsBody?.categoryBitMask = BitMaskCategory.bullet.rawValue
-        bullet.physicsBody?.contactTestBitMask = BitMaskCategory.target.rawValue
+        bullet.physicsBody?.categoryBitMask = 1
+        bullet.physicsBody?.contactTestBitMask = 2|3|4|5|6|7|8|9|10|11
         self.arscnView.scene.rootNode.addChildNode(bullet)
         bullet.runAction(
             SCNAction.sequence([SCNAction.wait(duration: 2.0),
@@ -128,9 +128,15 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         let nodeA = contact.nodeA
-        value = nodeA.physicsBody?.categoryBitMask
-        
-        print("@@@@@ \(value)")
+        let nodeB = contact.nodeB
+        if nodeA.physicsBody?.categoryBitMask == 2|3|4|5|6|7|8|9|10|11 {
+            self.Target = nodeA
+        } else if nodeB.physicsBody?.categoryBitMask == 2|3|4|5|6|7|8|9|10|11 {
+            self.Target = nodeB
+        }
+
+        Target?.removeFromParentNode()
+
         return
         
     }
