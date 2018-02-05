@@ -20,7 +20,7 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
     @IBOutlet weak var arscnView: ARSCNView!
     let configuration = ARWorldTrackingConfiguration()
     var power: Float = 50
-//    let timer = Each(0.05).seconds
+    let timer = Each(0.05).seconds
     var Target: SCNNode?
     var didAddTarget:Bool!
     var addButton:UIButton!
@@ -72,6 +72,7 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         let z:Float = -3.0 + Float(0.002) * Float(score)
         let smallTarget = bigTargetNode.childNode(withName: targetName, recursively: false)
         smallTarget?.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: smallTarget!, options: nil))
+        smallTarget?.name = targetName
         smallTarget?.position = SCNVector3(0,0,z)
         smallTarget?.physicsBody?.categoryBitMask = 12 - score
         smallTarget?.physicsBody?.contactTestBitMask = 1
@@ -80,7 +81,7 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
-      
+   
         
         guard let sceneView = sender.view as? ARSCNView else {return}
         guard let pointOfView = sceneView.pointOfView else {return}
@@ -117,14 +118,14 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
 //
 //    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        self.timer.stop()
-//        self.shootBullet()
+//        self.shootDarts()
 //        self.power = 1
 //    }
     
     func shootDarts(){
         self.removeEveryOtherDarts()
 
-        let dartScene = SCNScene(named: "Jump.scnassets/tar.scn")
+        let dartScene = SCNScene(named: "Jump.scnassets/darts.scn")
         let dartNode = (dartScene?.rootNode.childNode(withName: "darts", recursively: false))!
         guard let pointOfView = self.arscnView.pointOfView else {return}
         let transform = pointOfView.transform
@@ -132,14 +133,20 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         let orientation = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
         let position = location + orientation
         dartNode.position = position
+        dartNode.scale = SCNVector3(0.07,0.07,0.07)
         let body = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(node: dartNode))
+        body.isAffectedByGravity = false
         body.restitution = 0.2
         dartNode.name = "darts"
-        dartNode.physicsBody?.applyForce(SCNVector3(orientation.x*power, orientation.y*power, orientation.z*power), asImpulse: true)
+        dartNode.physicsBody = body
+        dartNode.physicsBody?.applyForce(SCNVector3(orientation.x*power * 0.2, orientation.y*power * 0.2, orientation.z*power * 0.2), asImpulse: true)
         dartNode.physicsBody?.categoryBitMask = 1
         dartNode.physicsBody?.contactTestBitMask = 2|3|4|5|6|7|8|9|10|11
         self.arscnView.scene.rootNode.addChildNode(dartNode)
-
+        dartNode.runAction(
+            SCNAction.sequence([SCNAction.wait(duration: 5.0),
+                                SCNAction.removeFromParentNode()])
+        )
     }
     
     func removeEveryOtherDarts() {
@@ -155,29 +162,8 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         let nodeA = contact.nodeA
         let nodeB = contact.nodeB
-//        if nodeA.physicsBody?.categoryBitMask == 12 {
-//            self.Target = nodeA
-//            print("----------------node A")
-//
-//        } else if nodeB.physicsBody?.categoryBitMask == 12 {
-//            self.Target = nodeB
-//            print("----------------node B")
-//
-//        }
-        if contact.nodeA.name == "bullet" {
-            print("----------------bullet")
-
-        }
-        
-        
-        if( nodeA.physicsBody?.categoryBitMask == 11){
-            print("----------------11")
-        }
-        if (nodeA.physicsBody?.categoryBitMask == 10){
-            print("----------------10")
-        }
-        
-//        print("----------------\(self.Target?.physicsBody?.categoryBitMask)")
+        print("----------------nodeB name \(nodeB.name)")
+        print("----------------nodeA name \(nodeA.name)")
 
         
     }
