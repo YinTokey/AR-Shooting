@@ -55,15 +55,27 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
             targetNode.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: targetNode, options: nil))
             targetNode.physicsBody?.categoryBitMask = 12
             targetNode.physicsBody?.contactTestBitMask = 1
-            self.arscnView.scene.rootNode.addChildNode(targetNode)
+//            self.arscnView.scene.rootNode.addChildNode(targetNode)
             didAddTarget = true
             addButton.isHidden = true
+            
+            for i in 1...10{
+                self.addSmallTarget(i, targetNode)
+            }
+
         }
-//        let scoreTen = targetNode.childNode(withName: "10", recursively: false)
-//        let scoreNight = targetNode.childNode(withName: "9", recursively: false)
-//        scoreTen?.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: scoreTen!, options: nil))
-//        scoreTen?.physicsBody?.categoryBitMask = 10
-//        scoreTen?.physicsBody?.contactTestBitMask = 1
+    }
+    
+    func addSmallTarget(_ score:Int,_ bigTargetNode:SCNNode){
+        let targetName = "\(score)"
+     
+        let z:Float = -3.0 + Float(0.002) * Float(score)
+        let smallTarget = bigTargetNode.childNode(withName: targetName, recursively: false)
+        smallTarget?.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: smallTarget!, options: nil))
+        smallTarget?.position = SCNVector3(0,0,z)
+        smallTarget?.physicsBody?.categoryBitMask = 12 - score
+        smallTarget?.physicsBody?.contactTestBitMask = 1
+        self.arscnView.scene.rootNode.addChildNode(smallTarget!)
 
     }
     
@@ -84,7 +96,7 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
             bullet.physicsBody = body
             bullet.physicsBody?.applyForce(SCNVector3(orientation.x*power, orientation.y*power, orientation.z*power), asImpulse: true)
             bullet.physicsBody?.categoryBitMask = 1
-            bullet.physicsBody?.contactTestBitMask = 12
+            bullet.physicsBody?.contactTestBitMask = 2|3|4|5|6|7|8|9|10|11
             self.arscnView.scene.rootNode.addChildNode(bullet)
             bullet.runAction(
                 SCNAction.sequence([SCNAction.wait(duration: 2.0),
@@ -136,16 +148,20 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
  
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-//        let nodeA = contact.nodeA
-//        let nodeB = contact.nodeB
-//        if nodeA.physicsBody?.categoryBitMask == 10 {
-//            self.Target = nodeA
-//        } else if nodeB.physicsBody?.categoryBitMask == 10 {
-//            self.Target = nodeB
-//        }
+        let nodeA = contact.nodeA
+        let nodeB = contact.nodeB
+        if nodeA.physicsBody?.categoryBitMask == 12 {
+            self.Target = nodeA
+            print("----------------node A")
+
+        } else if nodeB.physicsBody?.categoryBitMask == 12 {
+            self.Target = nodeB
+            print("----------------node B")
+
+        }
 //
 //        Target?.removeFromParentNode()
-        print("----------------")
+        print("----------------\(self.Target?.physicsBody?.categoryBitMask)")
     //    return
         
     }
