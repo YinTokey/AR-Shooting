@@ -23,16 +23,10 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
 //    let timer = Each(0.05).seconds
     var Target: SCNNode?
     var didAddTarget:Bool!
+    var addButton:UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.arscnView.debugOptions = [ ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
-//        if #available(iOS 11.3, *) {
-//            self.configuration.planeDetection = .vertical
-//        } else {
-//            // Fallback on earlier versions
-//            self.configuration.planeDetection = .horizontal
-//
-//        }
         self.arscnView.session.run(configuration)
         self.arscnView.autoenablesDefaultLighting = true
 
@@ -43,41 +37,39 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         self.arscnView.addGestureRecognizer(gestureRecognizer)
         didAddTarget = false
 
-
+        addButton = UIButton.init(frame: CGRect(x: self.view.frame.size.width - 170, y: self.view.frame.size.height - 170, width: 150, height: 60))
+        addButton.setTitle("Add Target", for: UIControlState.normal)
+        addButton.titleLabel?.font = UIFont.systemFont(ofSize: 23)
+        addButton.backgroundColor = UIColor.yellow
+        addButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        addButton.addTarget(self, action: #selector(createTarget), for: UIControlEvents.touchUpInside)
+        self.arscnView.addSubview(addButton)
+        
     }
 
-    func createTarget(planeAnchor: ARPlaneAnchor) -> SCNNode {
-
-        let targetScene = SCNScene(named: "Jump.scnassets/Target.scn")
-        let targetNode = (targetScene?.rootNode.childNode(withName: "target", recursively: false))!
-        targetNode.position = SCNVector3(planeAnchor.center.x,planeAnchor.center.y,planeAnchor.center.z)
-        targetNode.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: targetNode, options: nil))
-        targetNode.eulerAngles = SCNVector3(270.degreesToRadians, 0, 0)
-        targetNode.physicsBody?.categoryBitMask = 12
-        targetNode.physicsBody?.contactTestBitMask = 1
-    
-
-        let scoreTen = targetNode.childNode(withName: "10", recursively: false)
-        let scoreNight = targetNode.childNode(withName: "9", recursively: false)
-        scoreTen?.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: scoreTen!, options: nil))
-        scoreTen?.physicsBody?.categoryBitMask = 10
-        scoreTen?.physicsBody?.contactTestBitMask = 1
-
-        return targetNode
-    }
-    
-    @objc func handleTap(sender: UITapGestureRecognizer) {
+      @objc func createTarget(){
         if(!didAddTarget){
             let targetScene = SCNScene(named: "Jump.scnassets/tar.scn")
             let targetNode = (targetScene?.rootNode.childNode(withName: "tar", recursively: false))!
-            targetNode.position = SCNVector3(0,0,-0.02)
+            targetNode.position = SCNVector3(0,0,-3)
             targetNode.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: targetNode, options: nil))
-            targetNode.scale = SCNVector3(0.02,0.02,0.02)
-//            targetNode.physicsBody?.categoryBitMask = 12
-//            targetNode.physicsBody?.contactTestBitMask = 1
+            targetNode.physicsBody?.categoryBitMask = 12
+            targetNode.physicsBody?.contactTestBitMask = 1
             self.arscnView.scene.rootNode.addChildNode(targetNode)
+            didAddTarget = true
+            addButton.isHidden = true
+        }
+//        let scoreTen = targetNode.childNode(withName: "10", recursively: false)
+//        let scoreNight = targetNode.childNode(withName: "9", recursively: false)
+//        scoreTen?.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: scoreTen!, options: nil))
+//        scoreTen?.physicsBody?.categoryBitMask = 10
+//        scoreTen?.physicsBody?.contactTestBitMask = 1
 
-        }else{
+    }
+    
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+      
+        
             guard let sceneView = sender.view as? ARSCNView else {return}
             guard let pointOfView = sceneView.pointOfView else {return}
             let transform = pointOfView.transform
@@ -98,7 +90,7 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
                 SCNAction.sequence([SCNAction.wait(duration: 2.0),
                                     SCNAction.removeFromParentNode()])
             )
-        }
+       
         
     }
     
