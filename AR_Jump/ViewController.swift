@@ -140,6 +140,15 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
     func removebullet() {
         self.arscnView.scene.rootNode.enumerateChildNodes { (node, _) in
             if node.name == "bullet" {
+                let confetti = SCNParticleSystem(named: "Jump.scnassets/Fire.scnp", inDirectory: nil)
+                confetti?.loops = false
+                confetti?.particleLifeSpan = 0.03
+                confetti?.emitterShape = node.geometry
+                let confettiNode = SCNNode()
+                confettiNode.addParticleSystem(confetti!)
+                confettiNode.position = node.position
+          
+                self.arscnView.scene.rootNode.addChildNode(confettiNode)
                 node.removeFromParentNode()
             }
         }
