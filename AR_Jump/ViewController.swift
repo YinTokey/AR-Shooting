@@ -63,26 +63,8 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
             self.arscnView.scene.rootNode.addChildNode(targetNode)
             didAddTarget = true
             addButton.isHidden = true
-            
-//            for i in 1...10{
-//                self.addSmallTarget(i, targetNode)
-//            }
 
         }
-    }
-    
-    func addSmallTarget(_ score:Int,_ bigTargetNode:SCNNode){
-        let targetName = "\(score)"
-     
-        let z:Float = -3.0 + Float(0.002) * Float(score)
-        let smallTarget = bigTargetNode.childNode(withName: targetName, recursively: false)
-        smallTarget?.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: smallTarget!, options: nil))
-        smallTarget?.name = targetName
-        smallTarget?.position = SCNVector3(0,0,z)
-        smallTarget?.physicsBody?.categoryBitMask = 12 - score
-        smallTarget?.physicsBody?.contactTestBitMask = 1
-        self.arscnView.scene.rootNode.addChildNode(smallTarget!)
-
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
