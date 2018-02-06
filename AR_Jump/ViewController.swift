@@ -26,6 +26,8 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
     var addButton:UIButton!
     var targetsArray:Array<Any>!
     var distance:Double = 0.0
+    var scoreLabel:UILabel!
+    var totalScore:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.arscnView.debugOptions = [ ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
@@ -46,6 +48,13 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         addButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         addButton.addTarget(self, action: #selector(createTarget), for: UIControlEvents.touchUpInside)
         self.arscnView.addSubview(addButton)
+        
+        scoreLabel = UILabel.init(frame:CGRect(x: self.view.frame.size.width/2 - 40, y: 45, width: 80, height: 30))
+        scoreLabel.font = UIFont.systemFont(ofSize: 20)
+        scoreLabel.textColor = UIColor.black
+        scoreLabel.text = "0"
+        scoreLabel.textAlignment  = NSTextAlignment.center
+        self.arscnView.addSubview(scoreLabel)
         
     }
 
@@ -110,15 +119,44 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
             if(self.distance > 0){
-                print("~~~~~~~~~~~ \(self.distance)")
+                self.calculateScore()
                 self.distance = 0
+                self.scoreLabel.text = "\(self.totalScore)"
             }
             
         })
 
-
     }
     
+    
+    func calculateScore(){
+        var score:Int = 0
+        switch self.distance {
+        case 0...0.05:
+            score = 10
+        case 0.051...0.10:
+            score = 9
+        case 0.101...0.15:
+            score = 8
+        case 0.151...0.20:
+            score = 7
+        case 0.201...0.25:
+            score = 6
+        case 0.251...0.30:
+            score = 5
+        case 0.301...0.35:
+            score = 4
+        case 0.351...0.40:
+            score = 3
+        case 0.401...0.45:
+            score = 2
+        case 0.451...0.50:
+            score = 1
+        default:
+            score = 0
+        }
+        self.totalScore += score
+    }
     
 //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        timer.perform(closure: { () -> NextStep in
