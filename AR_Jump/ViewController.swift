@@ -24,6 +24,8 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
     var Target: SCNNode?
     var didAddTarget:Bool!
     var addButton:UIButton!
+    var targetsArray:Array<Any>!
+    var distance:Double = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.arscnView.debugOptions = [ ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
@@ -51,8 +53,9 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         if(!didAddTarget){
             let targetScene = SCNScene(named: "Jump.scnassets/tar.scn")
             let targetNode = (targetScene?.rootNode.childNode(withName: "tar", recursively: false))!
-            targetNode.position = SCNVector3(0,0,-3)
+            targetNode.position = SCNVector3(0,0,-6)
             targetNode.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: targetNode, options: nil))
+            targetNode.scale = SCNVector3(1.5,1.5,1.5)
             targetNode.physicsBody?.categoryBitMask = 12
             targetNode.physicsBody?.contactTestBitMask = 1
 //            self.arscnView.scene.rootNode.addChildNode(targetNode)
@@ -104,8 +107,16 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
             SCNAction.sequence([SCNAction.wait(duration: 2.0),
                                 SCNAction.removeFromParentNode()])
         )
-       
         
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+            if(self.distance > 0){
+                print("~~~~~~~~~~~ \(self.distance)")
+                self.distance = 0
+            }
+            
+        })
+
+
     }
     
     
@@ -157,15 +168,23 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         }
     }
     
- 
+    func removebullet() {
+        self.arscnView.scene.rootNode.enumerateChildNodes { (node, _) in
+            if node.name == "bullet" {
+                node.removeFromParentNode()
+            }
+        }
+    }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        let nodeA = contact.nodeA
-        let nodeB = contact.nodeB
-        print("----------------nodeB name \(nodeB.name)")
-        print("----------------nodeA name \(nodeA.name)")
 
+        print("------point  \(contact.contactPoint)")
+        let point:SCNVector3 = contact.contactPoint
+        self.distance = sqrt(Double(point.x * point.x + point.y * point.y))
         
+        
+        
+        self.removebullet()
     }
 
     
