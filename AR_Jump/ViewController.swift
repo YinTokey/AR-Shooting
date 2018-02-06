@@ -121,6 +121,8 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
             if(self.distance > 0){
                 self.calculateScore()
                 self.distance = 0
+                let soundID = SystemSoundID(kSystemSoundID_Vibrate)
+                AudioServicesPlaySystemSound(soundID)
                 self.scoreLabel.text = "\(self.totalScore)"
             }
             
@@ -219,9 +221,7 @@ class ViewController: UIViewController , ARSCNViewDelegate,ARSessionDelegate,SCN
         print("------point  \(contact.contactPoint)")
         let point:SCNVector3 = contact.contactPoint
         self.distance = sqrt(Double(point.x * point.x + point.y * point.y))
-        
-        
-        
+
         self.removebullet()
     }
 
