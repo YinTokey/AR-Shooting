@@ -8,7 +8,7 @@
 
 import XCTest
 
-class AR_JumpUITests: XCTestCase {
+class AR_Shooting_targetUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

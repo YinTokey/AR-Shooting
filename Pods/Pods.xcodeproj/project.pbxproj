@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		24136AEF43F860D25C4B48372C1026A7 /* Pods-AR_Jump-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9BFBA6C80FCEF4307F7DD776DC3ABD /* Pods-AR_Jump-dummy.m */; };
+		1903E947A7B2059416E46B8E3BA3D81F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		474346F8329D8FA896840475B97F9D38 /* Each-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A08964ED59B0C1455C915F287A077 /* Each-dummy.m */; };
+		4E73A64406E2931FF20A985FBE550584 /* Pods-AR_Shooting_target-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AB19E69AB7A1CDF167312FCF80FB0A80 /* Pods-AR_Shooting_target-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4EB7324F7DC31E558625FDAE95FF0266 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		70F56F2E17DF96E48DD545C0A9AC5082 /* Pods-AR_Jump-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 931C0BA1436E8A24C6B508A5F9D549E1 /* Pods-AR_Jump-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		67607A96D3516888F293067805EC8B2E /* Pods-AR_Shooting_target-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E80D2EBC12302423E22776A3C3566B15 /* Pods-AR_Shooting_target-dummy.m */; };
 		9AA72B5D3ABE134B587E47F81946A443 /* Each-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AC32EBD6C11382D691B5CB2A269F5EF7 /* Each-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A1A16A75EB7F407825945462174D395F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		A59123F7E20F6F7C6311F7B2336F8414 /* Each.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF99B90B4BBBDAC7744431A842BA82E /* Each.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E5A68334A803345F554EF2F852A44F90 /* PBXContainerItemProxy */ = {
+		22B3A06227DD1E5B43F5D9623817471F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -27,30 +27,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04F49512D756FE2B9BD0D5A423855C3B /* Pods_AR_Jump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AR_Jump.framework; path = "Pods-AR_Jump.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D2581BB4FCDF7E7F268F07BCF546286 /* Each.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Each.framework; path = Each.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A303B2F600C98F43A22D221CF16F021 /* Pods_AR_Shooting_target.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AR_Shooting_target.framework; path = "Pods-AR_Shooting_target.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4F5DC6FAAAC1C84CA0D71DB891F935 /* Each.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Each.modulemap; sourceTree = "<group>"; };
-		2B87DD7CD972F13F13E7BC88CC2E06DA /* Pods-AR_Jump-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AR_Jump-frameworks.sh"; sourceTree = "<group>"; };
-		44C24CEDD55C5BA2169BB74F45E9C0B6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6611C375B79B81F59C72BAD0453F1CBF /* Pods-AR_Jump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR_Jump.debug.xcconfig"; sourceTree = "<group>"; };
-		6D4DFCFA0A0538EBECBA59E084F6BCF2 /* Pods-AR_Jump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR_Jump.release.xcconfig"; sourceTree = "<group>"; };
-		6F9BFBA6C80FCEF4307F7DD776DC3ABD /* Pods-AR_Jump-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AR_Jump-dummy.m"; sourceTree = "<group>"; };
+		2753A0341201EF7A607F84A77690BA75 /* Pods-AR_Shooting_target-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AR_Shooting_target-resources.sh"; sourceTree = "<group>"; };
+		53F7365823D1729DB96ECC01794BE9E8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EBA861E84C64AACB9CA627D9E64B1C3 /* Pods-AR_Shooting_target.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR_Shooting_target.release.xcconfig"; sourceTree = "<group>"; };
+		730EB3E261320A4E373ADBE1D9D0D2C8 /* Pods-AR_Shooting_target.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-AR_Shooting_target.modulemap"; sourceTree = "<group>"; };
 		787FA85B7204D1FA1D74E2A4C57555E7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		847A08964ED59B0C1455C915F287A077 /* Each-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Each-dummy.m"; sourceTree = "<group>"; };
-		86D5101FF89839CF1195D9C2E2C55CB3 /* Pods-AR_Jump-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AR_Jump-acknowledgements.markdown"; sourceTree = "<group>"; };
-		922EC2B9B623B7724BB43FF94A97C025 /* Pods-AR_Jump.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-AR_Jump.modulemap"; sourceTree = "<group>"; };
-		931C0BA1436E8A24C6B508A5F9D549E1 /* Pods-AR_Jump-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AR_Jump-umbrella.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EB4FCB260CB5F6EBC13BD3EC924C43E /* Each-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Each-prefix.pch"; sourceTree = "<group>"; };
+		A1FC775A8198F76519A1774E3FCB80C0 /* Pods-AR_Shooting_target.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR_Shooting_target.debug.xcconfig"; sourceTree = "<group>"; };
+		AB19E69AB7A1CDF167312FCF80FB0A80 /* Pods-AR_Shooting_target-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AR_Shooting_target-umbrella.h"; sourceTree = "<group>"; };
 		AC32EBD6C11382D691B5CB2A269F5EF7 /* Each-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Each-umbrella.h"; sourceTree = "<group>"; };
 		BDC70563BB6EF521C927DBBAEF9278A4 /* Each.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Each.xcconfig; sourceTree = "<group>"; };
+		C56E0537B1D7E8A71AF06655E25344C5 /* Each.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Each.framework; path = Each.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E10B4EDCA2E98DC551D532EE2CB2512C /* Pods-AR_Jump-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AR_Jump-resources.sh"; sourceTree = "<group>"; };
-		EB16360CFC572A3E2A45FAF65CDE8939 /* Pods-AR_Jump-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AR_Jump-acknowledgements.plist"; sourceTree = "<group>"; };
+		E80D2EBC12302423E22776A3C3566B15 /* Pods-AR_Shooting_target-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AR_Shooting_target-dummy.m"; sourceTree = "<group>"; };
 		EBF99B90B4BBBDAC7744431A842BA82E /* Each.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Each.swift; path = Sources/Each.swift; sourceTree = "<group>"; };
+		F28F8BE0BEE8366A2A62A5AE8C13C84C /* Pods-AR_Shooting_target-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AR_Shooting_target-frameworks.sh"; sourceTree = "<group>"; };
+		F589E7DBBDA87EC708E70EB3FCBD20A0 /* Pods-AR_Shooting_target-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AR_Shooting_target-acknowledgements.plist"; sourceTree = "<group>"; };
+		F6A5853CB97733FF1F90CD839729FEAD /* Pods-AR_Shooting_target-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AR_Shooting_target-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3F731A61B29E52F95405B2BA07760CFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1903E947A7B2059416E46B8E3BA3D81F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		79DFE8C6825B6339A47616200DBAF35E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,22 +67,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E9CEDDD2FDF397505AE480F92DFB8F60 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A1A16A75EB7F407825945462174D395F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		74C1AC819D19C35CD13CE208727F25CD /* Products */ = {
+		1A56483580CF78482FFC499330AEEE77 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				0D2581BB4FCDF7E7F268F07BCF546286 /* Each.framework */,
-				04F49512D756FE2B9BD0D5A423855C3B /* Pods_AR_Jump.framework */,
+				495540758912BABAE4B2C11C6831F562 /* Pods-AR_Shooting_target */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		495540758912BABAE4B2C11C6831F562 /* Pods-AR_Shooting_target */ = {
+			isa = PBXGroup;
+			children = (
+				53F7365823D1729DB96ECC01794BE9E8 /* Info.plist */,
+				730EB3E261320A4E373ADBE1D9D0D2C8 /* Pods-AR_Shooting_target.modulemap */,
+				F6A5853CB97733FF1F90CD839729FEAD /* Pods-AR_Shooting_target-acknowledgements.markdown */,
+				F589E7DBBDA87EC708E70EB3FCBD20A0 /* Pods-AR_Shooting_target-acknowledgements.plist */,
+				E80D2EBC12302423E22776A3C3566B15 /* Pods-AR_Shooting_target-dummy.m */,
+				F28F8BE0BEE8366A2A62A5AE8C13C84C /* Pods-AR_Shooting_target-frameworks.sh */,
+				2753A0341201EF7A607F84A77690BA75 /* Pods-AR_Shooting_target-resources.sh */,
+				AB19E69AB7A1CDF167312FCF80FB0A80 /* Pods-AR_Shooting_target-umbrella.h */,
+				A1FC775A8198F76519A1774E3FCB80C0 /* Pods-AR_Shooting_target.debug.xcconfig */,
+				5EBA861E84C64AACB9CA627D9E64B1C3 /* Pods-AR_Shooting_target.release.xcconfig */,
+			);
+			name = "Pods-AR_Shooting_target";
+			path = "Target Support Files/Pods-AR_Shooting_target";
+			sourceTree = "<group>";
+		};
+		51AB916DCE0DDE7E00CA984437C70CD9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C56E0537B1D7E8A71AF06655E25344C5 /* Each.framework */,
+				1A303B2F600C98F43A22D221CF16F021 /* Pods_AR_Shooting_target.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,27 +119,9 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				A18461AD0A9E4F5AEF0827053AF8EE28 /* Pods */,
-				74C1AC819D19C35CD13CE208727F25CD /* Products */,
-				F446CBCEF47F977A4D858A9851CC892F /* Targets Support Files */,
+				51AB916DCE0DDE7E00CA984437C70CD9 /* Products */,
+				1A56483580CF78482FFC499330AEEE77 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		7E4C819172AD0ADA2A949264CF49B955 /* Pods-AR_Jump */ = {
-			isa = PBXGroup;
-			children = (
-				44C24CEDD55C5BA2169BB74F45E9C0B6 /* Info.plist */,
-				922EC2B9B623B7724BB43FF94A97C025 /* Pods-AR_Jump.modulemap */,
-				86D5101FF89839CF1195D9C2E2C55CB3 /* Pods-AR_Jump-acknowledgements.markdown */,
-				EB16360CFC572A3E2A45FAF65CDE8939 /* Pods-AR_Jump-acknowledgements.plist */,
-				6F9BFBA6C80FCEF4307F7DD776DC3ABD /* Pods-AR_Jump-dummy.m */,
-				2B87DD7CD972F13F13E7BC88CC2E06DA /* Pods-AR_Jump-frameworks.sh */,
-				E10B4EDCA2E98DC551D532EE2CB2512C /* Pods-AR_Jump-resources.sh */,
-				931C0BA1436E8A24C6B508A5F9D549E1 /* Pods-AR_Jump-umbrella.h */,
-				6611C375B79B81F59C72BAD0453F1CBF /* Pods-AR_Jump.debug.xcconfig */,
-				6D4DFCFA0A0538EBECBA59E084F6BCF2 /* Pods-AR_Jump.release.xcconfig */,
-			);
-			name = "Pods-AR_Jump";
-			path = "Target Support Files/Pods-AR_Jump";
 			sourceTree = "<group>";
 		};
 		9DD223C812552B985AC777604F887312 /* Each */ = {
@@ -156,25 +164,9 @@
 			path = "../Target Support Files/Each";
 			sourceTree = "<group>";
 		};
-		F446CBCEF47F977A4D858A9851CC892F /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7E4C819172AD0ADA2A949264CF49B955 /* Pods-AR_Jump */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		69DC2BEE3E9519038958B0A2FFB69A4A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				70F56F2E17DF96E48DD545C0A9AC5082 /* Pods-AR_Jump-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F2E998592A36735A0B9E037D4B6351B2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,25 +175,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FCD6718E430F0168B0B82859512FF11F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E73A64406E2931FF20A985FBE550584 /* Pods-AR_Shooting_target-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		CA387E640AF59B95D97220CF2CF178AD /* Pods-AR_Jump */ = {
+		5C33BA6F1140C410AB2313E2BC82C200 /* Pods-AR_Shooting_target */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8D2A25788410693F9193FD07CB60CBA1 /* Build configuration list for PBXNativeTarget "Pods-AR_Jump" */;
+			buildConfigurationList = 80ABD564BAC5ADF5F8382F8790FF20FB /* Build configuration list for PBXNativeTarget "Pods-AR_Shooting_target" */;
 			buildPhases = (
-				D845B3C058DDB717843166900E580617 /* Sources */,
-				E9CEDDD2FDF397505AE480F92DFB8F60 /* Frameworks */,
-				69DC2BEE3E9519038958B0A2FFB69A4A /* Headers */,
+				6109FC4F8D094CA0470DDBD7BDDE5EF8 /* Sources */,
+				3F731A61B29E52F95405B2BA07760CFF /* Frameworks */,
+				FCD6718E430F0168B0B82859512FF11F /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8D5F930A8B91305F0AEF6D373F476535 /* PBXTargetDependency */,
+				7C7195824B9D118F2F797B37BDEEC662 /* PBXTargetDependency */,
 			);
-			name = "Pods-AR_Jump";
-			productName = "Pods-AR_Jump";
-			productReference = 04F49512D756FE2B9BD0D5A423855C3B /* Pods_AR_Jump.framework */;
+			name = "Pods-AR_Shooting_target";
+			productName = "Pods-AR_Shooting_target";
+			productReference = 1A303B2F600C98F43A22D221CF16F021 /* Pods_AR_Shooting_target.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		FCCFB470D9636263A3ABB2C69E628585 /* Each */ = {
@@ -218,7 +218,7 @@
 			);
 			name = Each;
 			productName = Each;
-			productReference = 0D2581BB4FCDF7E7F268F07BCF546286 /* Each.framework */;
+			productReference = C56E0537B1D7E8A71AF06655E25344C5 /* Each.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -238,17 +238,25 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 74C1AC819D19C35CD13CE208727F25CD /* Products */;
+			productRefGroup = 51AB916DCE0DDE7E00CA984437C70CD9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				FCCFB470D9636263A3ABB2C69E628585 /* Each */,
-				CA387E640AF59B95D97220CF2CF178AD /* Pods-AR_Jump */,
+				5C33BA6F1140C410AB2313E2BC82C200 /* Pods-AR_Shooting_target */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6109FC4F8D094CA0470DDBD7BDDE5EF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67607A96D3516888F293067805EC8B2E /* Pods-AR_Shooting_target-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B51A2F8A38E123D549ABC7C3A1FA8562 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,29 +266,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D845B3C058DDB717843166900E580617 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				24136AEF43F860D25C4B48372C1026A7 /* Pods-AR_Jump-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8D5F930A8B91305F0AEF6D373F476535 /* PBXTargetDependency */ = {
+		7C7195824B9D118F2F797B37BDEEC662 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Each;
 			target = FCCFB470D9636263A3ABB2C69E628585 /* Each */;
-			targetProxy = E5A68334A803345F554EF2F852A44F90 /* PBXContainerItemProxy */;
+			targetProxy = 22B3A06227DD1E5B43F5D9623817471F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		25BC73F0F9E5DC1AA65482250895A4A8 /* Debug */ = {
+		4230793426404B239531920777AA058B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6611C375B79B81F59C72BAD0453F1CBF /* Pods-AR_Jump.debug.xcconfig */;
+			baseConfigurationReference = A1FC775A8198F76519A1774E3FCB80C0 /* Pods-AR_Shooting_target.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -293,18 +293,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-AR_Jump/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-AR_Shooting_target/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-AR_Jump/Pods-AR_Jump.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-AR_Shooting_target/Pods-AR_Shooting_target.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_AR_Jump;
+				PRODUCT_NAME = Pods_AR_Shooting_target;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -419,6 +419,41 @@
 			};
 			name = Release;
 		};
+		A0B77291C392E24F666DB8FCAA5B1363 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EBA861E84C64AACB9CA627D9E64B1C3 /* Pods-AR_Shooting_target.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-AR_Shooting_target/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AR_Shooting_target/Pods-AR_Shooting_target.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_AR_Shooting_target;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		CE5513B3E35A5C69E7F70F186BD3CE9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -463,41 +498,6 @@
 			};
 			name = Debug;
 		};
-		D8EC876D532ED00AEFD218D0FE65C7CB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D4DFCFA0A0538EBECBA59E084F6BCF2 /* Pods-AR_Jump.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-AR_Jump/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-AR_Jump/Pods-AR_Jump.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_AR_Jump;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -510,11 +510,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8D2A25788410693F9193FD07CB60CBA1 /* Build configuration list for PBXNativeTarget "Pods-AR_Jump" */ = {
+		80ABD564BAC5ADF5F8382F8790FF20FB /* Build configuration list for PBXNativeTarget "Pods-AR_Shooting_target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				25BC73F0F9E5DC1AA65482250895A4A8 /* Debug */,
-				D8EC876D532ED00AEFD218D0FE65C7CB /* Release */,
+				4230793426404B239531920777AA058B /* Debug */,
+				A0B77291C392E24F666DB8FCAA5B1363 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

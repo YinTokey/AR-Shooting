@@ -1,0 +1,6 @@
+framework module Pods_AR_Shooting_target {
+  umbrella header "Pods-AR_Shooting_target-umbrella.h"
+
+  export *
+  module * { export * }
+}

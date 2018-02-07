@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import AR_Jump
+@testable import AR_Shooting_target
 
-class AR_JumpTests: XCTestCase {
+class AR_Shooting_targetTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

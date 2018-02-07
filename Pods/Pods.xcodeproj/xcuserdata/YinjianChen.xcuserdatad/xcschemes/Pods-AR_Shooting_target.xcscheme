@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CA387E640AF59B95D97220CF2CF178AD"
-               BuildableName = "Pods_AR_Jump.framework"
-               BlueprintName = "Pods-AR_Jump"
+               BlueprintIdentifier = "5C33BA6F1140C410AB2313E2BC82C200"
+               BuildableName = "Pods_AR_Shooting_target.framework"
+               BlueprintName = "Pods-AR_Shooting_target"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CA387E640AF59B95D97220CF2CF178AD"
-            BuildableName = "Pods_AR_Jump.framework"
-            BlueprintName = "Pods-AR_Jump"
+            BlueprintIdentifier = "5C33BA6F1140C410AB2313E2BC82C200"
+            BuildableName = "Pods_AR_Shooting_target.framework"
+            BlueprintName = "Pods-AR_Shooting_target"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

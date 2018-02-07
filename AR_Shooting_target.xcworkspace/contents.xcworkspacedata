@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:AR_Jump.xcodeproj">
+      location = "group:../../../../../yinjianchen/Desktop/My finder/&#x6211;&#x7684;&#x5f00;&#x6e90;/AR_Shooting_target/AR_Shooting_target.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
