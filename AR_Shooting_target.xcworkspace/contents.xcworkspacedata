@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../../../yinjianchen/Desktop/My finder/&#x6211;&#x7684;&#x5f00;&#x6e90;/AR_Shooting_target/AR_Shooting_target.xcodeproj">
+      location = "group:../../../../../yinjianchen/Desktop/My finder/我的开源/AR_Shooting_target/AR_Shooting_target.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:AR_Shooting_target.xcodeproj">
    </FileRef>
 </Workspace>
