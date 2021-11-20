@@ -1,7 +1,5 @@
 # AR_Shooting_target
-A 3D shooting target game base on ARKit
-
-[Demonstration](https://ws3.sinaimg.cn/large/006tNc79gy1fo9bydm269g30go104x6w.gif)
+ARKit-based 3D shooting game.
 
 ### How to play
 1. Click the `Add Target` button, then you will find a target on the negative Z axis.
